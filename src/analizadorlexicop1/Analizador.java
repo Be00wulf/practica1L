@@ -88,6 +88,7 @@ public class Analizador {
                     break;
 
                     /*case 3:                   //ESPACIO PARA PLANIFICAR DECIMALES
+                    
                     break;*/
                     
                     case 4:
