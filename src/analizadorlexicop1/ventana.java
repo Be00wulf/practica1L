@@ -8,6 +8,7 @@ package analizadorlexicop1;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -16,6 +17,8 @@ import javax.swing.JOptionPane;
  * @author orcha
  */
 public class ventana extends javax.swing.JFrame {       //archivos entrada y salida
+    ArrayList<tokensLexemas> listaTokensLexemas = new ArrayList<>();
+    
     JFileChooser seleccionar = new JFileChooser();
     File archivo;
     FileInputStream entrada;
@@ -98,6 +101,7 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
+        btnAnalizarErrores = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -169,6 +173,13 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
         jLabel20.setText("7");
 
         jLabel21.setText("ERROR");
+
+        btnAnalizarErrores.setText("ANALIZAR ERRORES");
+        btnAnalizarErrores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnalizarErroresActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -248,7 +259,9 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
                             .addComponent(btnguardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnabrir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addComponent(btnbuscar)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnbuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAnalizarErrores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(269, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -289,7 +302,9 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
                     .addComponent(btnabrir)
                     .addComponent(btnbuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnguardar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnguardar)
+                    .addComponent(btnAnalizarErrores))
                 .addGap(21, 21, 21))
         );
 
@@ -350,6 +365,11 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
         
     }//GEN-LAST:event_btnbuscarActionPerformed
 
+    private void btnAnalizarErroresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizarErroresActionPerformed
+        // BOTONCITO DE ANALISIS DE ERRORES
+        new Analizador(listaTokensLexemas).analizar(txtarea.getText());
+    }//GEN-LAST:event_btnAnalizarErroresActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -386,6 +406,7 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAnalizarErrores;
     private javax.swing.JButton btnabrir;
     private javax.swing.JButton btnbuscar;
     private javax.swing.JButton btnguardar;

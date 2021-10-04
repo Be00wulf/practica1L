@@ -123,7 +123,10 @@
                           <Component id="btnabrir" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnbuscar" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btnbuscar" max="32767" attributes="0"/>
+                          <Component id="btnAnalizarErrores" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
               <EmptySpace pref="269" max="32767" attributes="0"/>
@@ -173,7 +176,10 @@
                   <Component id="btnbuscar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="btnguardar" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnguardar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnAnalizarErrores" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -333,6 +339,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="ERROR"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnAnalizarErrores">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="ANALIZAR ERRORES"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAnalizarErroresActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

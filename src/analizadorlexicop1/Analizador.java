@@ -133,8 +133,6 @@ public class Analizador {
                         tipoToken = "ERROR";
                         estado = 0;
                     break;
-                    
-                    
 
                     case 8:
                         estado = 8;
