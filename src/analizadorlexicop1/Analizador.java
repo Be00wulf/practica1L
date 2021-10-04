@@ -127,7 +127,12 @@ public class Analizador {
                         }
                     break;
                     
-                    
+                    case 7:   
+                        expresion = String.valueOf(texto[i].charAt(j));   //char a string
+                        numeroToken = 7; 
+                        tipoToken = "ERROR";
+                        estado = 0;
+                    break;
                     
                     
 
