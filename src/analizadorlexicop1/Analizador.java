@@ -114,6 +114,22 @@ public class Analizador {
                             estado = 0;
                         }
                     break;
+                    
+                    case 6:
+                        expresion = expresion + texto[i].charAt(j);       //1 caracter
+                        if (valorAsciiSiguiente == 40 || valorAsciiSiguiente == 41 || valorAsciiSiguiente == 91 || valorAsciiSiguiente == 93 || valorAsciiSiguiente == 123 || valorAsciiSiguiente == 125) {  //AGRUPACION
+                            estado = 6;
+                            
+                        } else {
+                            numeroToken = 6;
+                            tipoToken = "AGRUPACION";
+                            estado = 0;
+                        }
+                    break;
+                    
+                    
+                    
+                    
 
                     case 8:
                         estado = 8;
