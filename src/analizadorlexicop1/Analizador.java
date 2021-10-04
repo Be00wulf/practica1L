@@ -53,8 +53,11 @@ public class Analizador {
                     estado = caracter(valorAsciiActual);    //el estado reconoce con que caracter empieza
                 }
                 
-                valorAsciiSiguiente = texto[i].codePointAt(j+1);    //posicion siguiente en ascii
-                
+                try {
+                    valorAsciiSiguiente = texto[i].codePointAt(j+1);    //posicion siguiente en ascii
+                } catch(Exception e){
+                    
+                }
                 
                 //superAUTOMATA 
                 switch(estado){
