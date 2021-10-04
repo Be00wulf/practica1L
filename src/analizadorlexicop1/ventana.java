@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  * @author orcha
  */
 public class ventana extends javax.swing.JFrame {       //archivos entrada y salida
-    ArrayList<tokensLexemas> listaTokensLexemas = new ArrayList<>();
+    ArrayList<tokensLexemas> listaTokensLexemas = new ArrayList();
     
     JFileChooser seleccionar = new JFileChooser();
     File archivo;
@@ -80,7 +80,7 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
         txtarea = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtareaError = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -125,9 +125,9 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
 
         jLabel1.setText("TEXTO DE ENTRADA");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtareaError.setColumns(20);
+        txtareaError.setRows(5);
+        jScrollPane1.setViewportView(txtareaError);
 
         jLabel2.setText("ERRORES");
 
@@ -367,7 +367,12 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
 
     private void btnAnalizarErroresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizarErroresActionPerformed
         // BOTONCITO DE ANALISIS DE ERRORES
+        String entrada = this.txtarea.getText(); 
         new Analizador(listaTokensLexemas).analizar(txtarea.getText());
+        
+        for (int i = 0; i < listaTokensLexemas.size(); i++) {
+            txtareaError.setText(txtareaError.getText() + "\n" + listaTokensLexemas.get(i).toString());
+        }
     }//GEN-LAST:event_btnAnalizarErroresActionPerformed
 
     /**
@@ -432,7 +437,7 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea txtarea;
+    private javax.swing.JTextArea txtareaError;
     // End of variables declaration//GEN-END:variables
 }

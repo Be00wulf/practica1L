@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 public class Analizador {
     //variables
-    ArrayList<tokensLexemas> listaTokensLexemas = new ArrayList<>();
+    ArrayList<tokensLexemas> listaTokensLexemas = new ArrayList();
     
     
     //constructores
