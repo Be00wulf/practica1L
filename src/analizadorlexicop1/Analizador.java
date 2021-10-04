@@ -102,6 +102,18 @@ public class Analizador {
                             estado = 0;
                         }
                     break;
+                    
+                    case 5:
+                        expresion = expresion + texto[i].charAt(j);       //1 caracter
+                        if (valorAsciiSiguiente == 43 || valorAsciiSiguiente == 45 || valorAsciiSiguiente == 42 || valorAsciiSiguiente == 47 || valorAsciiSiguiente == 37) {  //OPERADORES
+                            estado = 5;
+                            
+                        } else {
+                            numeroToken = 5;
+                            tipoToken = "OPERADOR";
+                            estado = 0;
+                        }
+                    break;
 
                     case 8:
                         estado = 8;
