@@ -28,7 +28,7 @@ public class Analizador {
         String[] texto = separadorLineas(cadena, '\n');         //salto da fin en la ultima linea se debe dar salto de linea
         String tipoToken = "";
         int numeroToken = 0;
-        String lexema = "";
+        String expresion = "";
         int estado = 0;
         
         for (int i = 0; i < texto.length; i++) {            //lee linea         
@@ -41,7 +41,7 @@ public class Analizador {
                 //  hola            hola8
                 
                 if (estado == 0) {
-                    estado = caracter(valorAsciiActual);    //SEGUN alfabeto
+                    estado = caracter(valorAsciiActual);    //el estado reconoce con que caracter empieza
                 }
                 
                 valorAsciiSiguiente = texto[i].codePointAt(j+1);    //posicion siguiente en ascii
@@ -50,15 +50,26 @@ public class Analizador {
                 //superAUTOMATA 
                 switch(estado){
                     /*case 1:
-                        
                     break;*/
                     case 1:
-                        
+                        expresion = expresion + texto[i].charAt(j);       //1 caracter
+                        if ((valorAsciiSiguiente >= 97 && valorAsciiSiguiente <= 122) || (valorAsciiSiguiente >= 65 && valorAsciiSiguiente <= 90)) {  //letra
+                            estado = 1;
+                            
+                        } else if (valorAsciiSiguiente >= 48 && valorAsciiSiguiente <= 57) {  //digito
+                            estado = 1;
+                            
+                        } else {
+                            numeroToken = 1;
+                            tipoToken = "IDENTIFICADOR";
+                            estado = 0;
+                        }
                     break;
+                    
+                    
+                    
                         
-                }
-                
-                
+                }//fin switch
                 
             }//fin forCaracter
             
@@ -73,7 +84,7 @@ public class Analizador {
     
     
     //ALFABETO    POSICION   TABLA ASCII                RECORDAR=>CODEPOINTAT
-    public  int caracter(int posicionAscii){
+    public  int caracter(int posicionAscii){//primer caracter
         //(minusculas ASCII 97-122       o       mayusculas ASCII 65-90)
         if ((posicionAscii >= 97 && posicionAscii <= 122) || (posicionAscii >= 65 && posicionAscii <= 90)) {
             return 1;//abecedario
