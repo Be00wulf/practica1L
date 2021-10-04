@@ -22,7 +22,7 @@ public class Analizador {
     //AGREGAR VARIABLE PARA ESCRIBIR ... SALTO DE LINEA?
     //SACAR ERRORES PARA LA PRIMERA TEXTAREA
     //LECTURA DE LINEA LUEGO DEL SALTO DE LINEA QUE DA UN NUMERO Y UN ESPACIO
-    
+    //PARA EL DECIMAL LEER LA LINEA Y SI YA HAY UN PUNTO QUE TIRE ERROR
     
     public void analizar(String cadena){
         String[] texto = separadorLineas(cadena, '\n');         //salto da fin en la ultima linea se debe dar salto de linea
@@ -33,13 +33,30 @@ public class Analizador {
         
         for (int i = 0; i < texto.length; i++) {            //lee linea         
             for (int j = 0; j < texto[i].length(); j++) {   //lee caracter      
-                int actual;
-                int siguiente = -1;
+                int valorAsciiActual;         
+                int valorAsciiSiguiente = -1;     //para la deteccion de errores antes de que termine el token valido
+                valorAsciiActual = texto[i].codePointAt(j); //obteniendo la posicion del caracter en ascii
                 
                 //  0123
-                //  hola
+                //  hola            hola8
+                
+                if (estado == 0) {
+                    estado = caracter(valorAsciiActual);    //SEGUN alfabeto
+                }
+                
+                valorAsciiSiguiente = texto[i].codePointAt(j+1);    //posicion siguiente en ascii
                 
                 
+                //superAUTOMATA 
+                switch(estado){
+                    /*case 1:
+                        
+                    break;*/
+                    case 1:
+                        
+                    break;
+                        
+                }
                 
                 
                 
@@ -55,11 +72,11 @@ public class Analizador {
     
     
     
-    //ALFABETO   LEXEMAS    POSICION   ASCII                RECORDAR=>CODEPOINTAT
+    //ALFABETO    POSICION   TABLA ASCII                RECORDAR=>CODEPOINTAT
     public  int caracter(int posicionAscii){
         //(minusculas ASCII 97-122       o       mayusculas ASCII 65-90)
         if ((posicionAscii >= 97 && posicionAscii <= 122) || (posicionAscii >= 65 && posicionAscii <= 90)) {
-            return 1;//identificador
+            return 1;//abecedario
             
         }   else if (posicionAscii >= 48 && posicionAscii <= 57) {      //numeros ascii
             return 2;           //numeros 0-9
