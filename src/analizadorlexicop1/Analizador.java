@@ -1,29 +1,38 @@
 /*
 
 NUMERO        1            2           3           4            5            6           7         8
-TOKEN   IDENTIFICADOR    NUMERO     DECIMAL    PUNTUACION    OPERADOR    AGRUPACION    ERROR    ESPACIO
+TOKEN   IDENTIFICADOR    NUMERO     DECIMAL    PUNTUACION    OPERADOR    AGRUPACION    ERROR    ESPACIOsalto
  
+    lista de tokens
+    ESTABLECER SALTO DE LINEA
+    analisis    matriz del automata
+    ESTABLECE EN LA MATRIZ EL NUMERO EN EL SALTO DE LINEA Y QUE NO LA IGNORE  
+    AGREGAR VARIABLE PARA ESCRIBIR ... SALTO DE LINEA?
+    SACAR ERRORES PARA LA PRIMERA TEXTAREA
+    LECTURA DE LINEA LUEGO DEL SALTO DE LINEA QUE DA UN NUMERO Y UN ESPACIO
+    PARA EL DECIMAL LEER LA LINEA Y SI YA HAY UN PUNTO QUE TIRE ERROR
 */
 package analizadorlexicop1;
 
-/**
- *
- * @author orcha
- */
+import java.util.ArrayList;
+
+    /**
+     *
+     * @author orcha
+     */
 
 public class Analizador {
-    //lista de tokens
+    //variables
+    ArrayList<tokensLexemas> listaTokensLexemas = new ArrayList<>();
     
     
-    //ESTABLECER SALTO DE LINEA
+    //constructores
+    public Analizador(ArrayList<tokensLexemas> listaTokensLexemas){
+        this.listaTokensLexemas = listaTokensLexemas;
+    }
+    
+    
     //metodos
-    //analisis    matriz del automata
-    //ESTABLECE EN LA MATRIZ EL NUMERO EN EL SALTO DE LINEA Y QUE NO LA IGNORE  
-    //AGREGAR VARIABLE PARA ESCRIBIR ... SALTO DE LINEA?
-    //SACAR ERRORES PARA LA PRIMERA TEXTAREA
-    //LECTURA DE LINEA LUEGO DEL SALTO DE LINEA QUE DA UN NUMERO Y UN ESPACIO
-    //PARA EL DECIMAL LEER LA LINEA Y SI YA HAY UN PUNTO QUE TIRE ERROR
-    
     public void analizar(String cadena){
         String[] texto = separadorLineas(cadena, '\n');         //salto da fin en la ultima linea se debe dar salto de linea
         String tipoToken = "";
@@ -66,10 +75,46 @@ public class Analizador {
                         }
                     break;
                     
+                    case 2:
+                        expresion = expresion + texto[i].charAt(j);       //1 caracter
+                        if (valorAsciiSiguiente >= 48 && valorAsciiSiguiente <= 57) {  //digito
+                            estado = 2;
+                            
+                        } else {
+                            numeroToken = 2;
+                            tipoToken = "NUMERO";
+                            estado = 0;
+                        }
+                    break;
+
+                    /*case 3:                   //ESPACIO PARA PLANIFICAR DECIMALES
+                    break;*/
                     
-                    
-                        
+                    case 4:
+                        expresion = expresion + texto[i].charAt(j);       //1 caracter
+                        if (valorAsciiSiguiente == 46 || valorAsciiSiguiente == 44 || valorAsciiSiguiente == 58 || valorAsciiSiguiente == 59) {  //PUNTUACION
+                            estado = 4;
+                            
+                        } else {
+                            numeroToken = 4;
+                            tipoToken = "PUNTUACION";
+                            estado = 0;
+                        }
+                    break;
+
+                    case 8:
+                        estado = 8;
+                    break;
                 }//fin switch
+                
+                if (estado == 0) {
+                    listaTokensLexemas.add(new tokensLexemas(expresion, tipoToken, numeroToken, i+1, j+1));
+                    expresion = ""; //reset
+                }
+                
+                if (estado == 8) {
+                    estado = 0; //ignorando espacios y saltos
+                }
                 
             }//fin forCaracter
             
