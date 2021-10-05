@@ -65,7 +65,7 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
         int contador = 0;
         
         while (hallado == false && contador<listaTokensLexemas.size()) {            
-            if (listaTokensLexemas.get(contador).getPalabra().compareTo(palabra) == 0) {
+            if (listaTokensLexemas.get(contador).getPalabra().compareTo(palabra) == 0) {    //==0 cadenas equivalentes
                 hallado = true;
                 
             } else {
@@ -392,6 +392,7 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
         new Analizador(listaTokensLexemas).analizar(txtarea.getText());
         
         for (int i = 0; i < listaTokensLexemas.size(); i++) {
+            
             txtareaError.setText(txtareaError.getText() + "\n" + listaTokensLexemas.get(i).toString());
         }
         
