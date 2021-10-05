@@ -96,11 +96,14 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="btnabrir" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
-                                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -117,19 +120,16 @@
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btnguardar" max="32767" attributes="0"/>
-                          <Component id="btnabrir" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="196" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="btnbuscar" max="32767" attributes="0"/>
                           <Component id="btnAnalizarErrores" max="32767" attributes="0"/>
                       </Group>
+                      <EmptySpace pref="571" max="32767" attributes="0"/>
+                      <Component id="btnguardar" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="269" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -173,13 +173,11 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnabrir" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnbuscar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnAnalizarErrores" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnguardar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnguardar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnAnalizarErrores" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="btnbuscar" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -255,6 +253,7 @@
     <Component class="javax.swing.JButton" name="btnbuscar">
       <Properties>
         <Property name="text" type="java.lang.String" value="BUSCAR PALABRA"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnbuscarActionPerformed"/>

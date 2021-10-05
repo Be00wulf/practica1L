@@ -60,9 +60,30 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
     
     
     //BUSCANDO PALABRA...
-    public static void buscarPalabra(File archivo, String palabra){
+    public boolean buscarPalabra(String palabra){
+        boolean hallado = false;
+        int contador = 0;
         
-    }
+        while (hallado == false && contador<listaTokensLexemas.size()) {            
+            if (listaTokensLexemas.get(contador).getPalabra().compareTo(palabra) == 0) {
+                hallado = true;
+                
+            } else {
+                contador++;
+            }
+            
+        }//fin while
+        
+        if (hallado == true) {
+            JOptionPane.showMessageDialog(null, "ʕ•́ᴥ•̀ʔっ SE HA ENCONTRADO LA PALABRA \n" + listaTokensLexemas.get(contador).toString());
+            return false;
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "ʕ•́ᴥ•̀ʔっ NO SE HA ENCONTRADO LA PALABRA");
+            return true;
+        }
+        
+    }//fin buscarPalabra
     
     
     /**
@@ -136,6 +157,7 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
         jLabel4.setText("AUTOMATAS");
 
         btnbuscar.setText("BUSCAR PALABRA");
+        btnbuscar.setEnabled(false);
         btnbuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnbuscarActionPerformed(evt);
@@ -240,10 +262,12 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
                                         .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(1, 1, 1)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel1))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(btnabrir)
+                                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -254,15 +278,13 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
                                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnguardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnabrir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
+                        .addGap(196, 196, 196)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnbuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnAnalizarErrores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(269, Short.MAX_VALUE))
+                            .addComponent(btnAnalizarErrores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 571, Short.MAX_VALUE)
+                        .addComponent(btnguardar)))
+                .addGap(138, 138, 138))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,11 +322,10 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnabrir)
-                    .addComponent(btnbuscar))
+                    .addComponent(btnAnalizarErrores)
+                    .addComponent(btnguardar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnguardar)
-                    .addComponent(btnAnalizarErrores))
+                .addComponent(btnbuscar)
                 .addGap(21, 21, 21))
         );
 
@@ -359,10 +380,10 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
     //BOTON DE BUSQUEDA
     private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
         // TODO add your handling code here:
-        String busqueda = JOptionPane.showInputDialog("ʕ•́ᴥ•̀ʔっ Ingrese una palabra a buscar dentro del texto de entrada");
-        
-        
-        
+        boolean valor = false;
+            String palabraBusqueda = JOptionPane.showInputDialog("ʕ•́ᴥ•̀ʔっ Ingrese una palabra a buscar en el texto de entrada");
+            valor = buscarPalabra(palabraBusqueda);
+            
     }//GEN-LAST:event_btnbuscarActionPerformed
 
     private void btnAnalizarErroresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizarErroresActionPerformed
@@ -373,6 +394,8 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
         for (int i = 0; i < listaTokensLexemas.size(); i++) {
             txtareaError.setText(txtareaError.getText() + "\n" + listaTokensLexemas.get(i).toString());
         }
+        
+        btnbuscar.setEnabled(true); //solo se acriva la busqueda si se an analizado los errores
     }//GEN-LAST:event_btnAnalizarErroresActionPerformed
 
     /**
