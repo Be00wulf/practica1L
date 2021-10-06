@@ -407,8 +407,8 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
     
     private void btnAnalizarErroresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizarErroresActionPerformed
         // BOTONCITO DE ANALISIS DE ERRORES
-        listaTokensLexemas.clear();
-        txtareaError.setText("");
+        listaTokensLexemas.clear();//linpiar arraylist
+        txtareaError.setText("");//limpiar area de texto de errores
         String entrada = this.txtarea.getText(); 
         new Analizador(listaTokensLexemas).analizar(txtarea.getText());
         boolean b = false;
