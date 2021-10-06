@@ -411,6 +411,7 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
         new Analizador(listaTokensLexemas).analizar(txtarea.getText());
         boolean b = false;
         
+        
         for (int i = 0; i < listaTokensLexemas.size(); i++) {
             if (listaTokensLexemas.get(i).getLexema() != 7) {
                 b = false;//PQJ
@@ -420,7 +421,7 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
             }
             
         }//fin for
-        
+
         if (txtareaError.getText().length() == 0) {//txtarea vacia?
             txtareaError.setText("ʕ•́ᴥ•̀ʔっ NO SE HAN ENCONTRADO \nERRORES PUEDE ANALIZAR TOKENS");
             //AGREGAR AQUI LA ACTIVACION DEL BOTON DE GENERACIOON DE TOKENS
@@ -435,6 +436,7 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
     
     private void btnAnalizarTokensActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizarTokensActionPerformed
         // TODO add your handling code here:
+        listaTokensLexemas.clear();//no tocar
         String entrada = this.txtarea.getText(); 
         new Analizador(listaTokensLexemas).analizar(txtarea.getText());
         

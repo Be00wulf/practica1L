@@ -66,11 +66,20 @@ public class Analizador {
                     case 1:
                         expresion = expresion + texto[i].charAt(j);       //1 caracter
                         if ((valorAsciiSiguiente >= 97 && valorAsciiSiguiente <= 122) || (valorAsciiSiguiente >= 65 && valorAsciiSiguiente <= 90)) {  //letra
-                            estado = 1;
+                            estado = 1;//abecedario mayusculas minusculas
                             
                         } else if (valorAsciiSiguiente >= 48 && valorAsciiSiguiente <= 57) {  //digito
                             estado = 1;
                             
+                        } else if (valorAsciiSiguiente == 46 || valorAsciiSiguiente == 44 || valorAsciiSiguiente == 58 || valorAsciiSiguiente == 59) {
+                            estado = 7;           //puntuacion   . , : ;
+            
+                        } else if (valorAsciiSiguiente == 43 || valorAsciiSiguiente == 45 || valorAsciiSiguiente == 42 || valorAsciiSiguiente == 47 || valorAsciiSiguiente == 37) {
+                            estado = 7;            //operador     + - * / %
+
+                        } else if (valorAsciiSiguiente == 40 || valorAsciiSiguiente == 41 || valorAsciiSiguiente == 91 || valorAsciiSiguiente == 93 || valorAsciiSiguiente == 123 || valorAsciiSiguiente == 125) {
+                            estado = 7;            //agrupacion     ()  []  {}
+
                         } else {
                             numeroToken = 1;
                             tipoToken = "IDENTIFICADOR";
@@ -83,6 +92,21 @@ public class Analizador {
                         if (valorAsciiSiguiente >= 48 && valorAsciiSiguiente <= 57) {  //digito
                             estado = 2;
                             
+                        } else if ((valorAsciiSiguiente >= 97 && valorAsciiSiguiente <= 122) || (valorAsciiSiguiente >= 65 && valorAsciiSiguiente <= 90)) {  //letra
+                            estado = 7;//abecedario mayusculas minusculas
+                            
+                        } else if (valorAsciiSiguiente >= 48 && valorAsciiSiguiente <= 57) {  //digito
+                            estado = 2;
+                            
+                        } else if (/*valorAsciiSiguiente == 46 || */valorAsciiSiguiente == 44 || valorAsciiSiguiente == 58 || valorAsciiSiguiente == 59) {
+                            estado = 7;           //puntuacion   [.] , : ;
+            
+                        } else if (valorAsciiSiguiente == 43 || valorAsciiSiguiente == 45 || valorAsciiSiguiente == 42 || valorAsciiSiguiente == 47 || valorAsciiSiguiente == 37) {
+                            estado = 7;            //operador     + - * / %
+
+                        } else if (valorAsciiSiguiente == 40 || valorAsciiSiguiente == 41 || valorAsciiSiguiente == 91 || valorAsciiSiguiente == 93 || valorAsciiSiguiente == 123 || valorAsciiSiguiente == 125) {
+                            estado = 7;            //agrupacion     ()  []  {}
+
                         } else {
                             numeroToken = 2;
                             tipoToken = "NUMERO";
@@ -99,6 +123,21 @@ public class Analizador {
                         if (valorAsciiSiguiente == 46 || valorAsciiSiguiente == 44 || valorAsciiSiguiente == 58 || valorAsciiSiguiente == 59) {  //PUNTUACION
                             estado = 4;
                             
+                        } else if ((valorAsciiSiguiente >= 97 && valorAsciiSiguiente <= 122) || (valorAsciiSiguiente >= 65 && valorAsciiSiguiente <= 90)) {  //letra
+                            estado = 7;//abecedario mayusculas minusculas
+                            
+                        } else if (valorAsciiSiguiente >= 48 && valorAsciiSiguiente <= 57) {  //digito
+                            estado = 7;
+                            
+                        } else if (valorAsciiSiguiente == 46 || valorAsciiSiguiente == 44 || valorAsciiSiguiente == 58 || valorAsciiSiguiente == 59) {
+                            estado = 4;           //puntuacion   . , : ;
+            
+                        } else if (valorAsciiSiguiente == 43 || valorAsciiSiguiente == 45 || valorAsciiSiguiente == 42 || valorAsciiSiguiente == 47 || valorAsciiSiguiente == 37) {
+                            estado = 7;            //operador     + - * / %
+
+                        } else if (valorAsciiSiguiente == 40 || valorAsciiSiguiente == 41 || valorAsciiSiguiente == 91 || valorAsciiSiguiente == 93 || valorAsciiSiguiente == 123 || valorAsciiSiguiente == 125) {
+                            estado = 7;            //agrupacion     ()  []  {}
+
                         } else {
                             numeroToken = 4;
                             tipoToken = "PUNTUACION";
@@ -111,6 +150,21 @@ public class Analizador {
                         if (valorAsciiSiguiente == 43 || valorAsciiSiguiente == 45 || valorAsciiSiguiente == 42 || valorAsciiSiguiente == 47 || valorAsciiSiguiente == 37) {  //OPERADORES
                             estado = 5;
                             
+                        } else if ((valorAsciiSiguiente >= 97 && valorAsciiSiguiente <= 122) || (valorAsciiSiguiente >= 65 && valorAsciiSiguiente <= 90)) {  //letra
+                            estado = 7;//abecedario mayusculas minusculas
+                            
+                        } else if (valorAsciiSiguiente >= 48 && valorAsciiSiguiente <= 57) {  //digito
+                            estado = 7;
+                            
+                        } else if (valorAsciiSiguiente == 46 || valorAsciiSiguiente == 44 || valorAsciiSiguiente == 58 || valorAsciiSiguiente == 59) {
+                            estado = 7;           //puntuacion   . , : ;
+            
+                        } else if (valorAsciiSiguiente == 43 || valorAsciiSiguiente == 45 || valorAsciiSiguiente == 42 || valorAsciiSiguiente == 47 || valorAsciiSiguiente == 37) {
+                            estado = 5;            //operador     + - * / %
+
+                        } else if (valorAsciiSiguiente == 40 || valorAsciiSiguiente == 41 || valorAsciiSiguiente == 91 || valorAsciiSiguiente == 93 || valorAsciiSiguiente == 123 || valorAsciiSiguiente == 125) {
+                            estado = 7;            //agrupacion     ()  []  {}
+
                         } else {
                             numeroToken = 5;
                             tipoToken = "OPERADOR";
@@ -123,7 +177,23 @@ public class Analizador {
                         if (valorAsciiSiguiente == 40 || valorAsciiSiguiente == 41 || valorAsciiSiguiente == 91 || valorAsciiSiguiente == 93 || valorAsciiSiguiente == 123 || valorAsciiSiguiente == 125) {  //AGRUPACION
                             estado = 6;
                             
-                        } else {
+                        } else if ((valorAsciiSiguiente >= 97 && valorAsciiSiguiente <= 122) || (valorAsciiSiguiente >= 65 && valorAsciiSiguiente <= 90)) {  //letra
+                            estado = 7; //abecedario mayusculas minusculas
+                            
+                        } else if (valorAsciiSiguiente >= 48 && valorAsciiSiguiente <= 57) {  //digito
+                            estado = 7;     //digito
+                            
+                        } else if (valorAsciiSiguiente == 46 || valorAsciiSiguiente == 44 || valorAsciiSiguiente == 58 || valorAsciiSiguiente == 59) {
+                            estado = 7;           //puntuacion   . , : ;
+            
+                        } else if (valorAsciiSiguiente == 43 || valorAsciiSiguiente == 45 || valorAsciiSiguiente == 42 || valorAsciiSiguiente == 47 || valorAsciiSiguiente == 37) {
+                            estado = 7;            //operador     + - * / %
+
+                        } else if (valorAsciiSiguiente == 40 || valorAsciiSiguiente == 41 || valorAsciiSiguiente == 91 || valorAsciiSiguiente == 93 || valorAsciiSiguiente == 123 || valorAsciiSiguiente == 125) {
+                            estado = 6;            //agrupacion     ()  []  {}
+
+                        } 
+                        else {
                             numeroToken = 6;
                             tipoToken = "AGRUPACION";
                             estado = 0;
@@ -132,7 +202,7 @@ public class Analizador {
                     
                     case 7:   
                         expresion = String.valueOf(texto[i].charAt(j));   //char a string
-                        numeroToken = 7; 
+                        numeroToken = 7;
                         tipoToken = "ERROR";
                         estado = 0;
                     break;
