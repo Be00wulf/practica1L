@@ -407,10 +407,11 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
     
     private void btnAnalizarErroresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizarErroresActionPerformed
         // BOTONCITO DE ANALISIS DE ERRORES
+        listaTokensLexemas.clear();
+        txtareaError.setText("");
         String entrada = this.txtarea.getText(); 
         new Analizador(listaTokensLexemas).analizar(txtarea.getText());
         boolean b = false;
-        
         
         for (int i = 0; i < listaTokensLexemas.size(); i++) {
             if (listaTokensLexemas.get(i).getLexema() != 7) {
