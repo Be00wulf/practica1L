@@ -33,6 +33,7 @@ public class Analizador {
     
     
     //metodos
+    //analizar
     public void analizar(String cadena){
         String[] texto = separadorLineas(cadena, '\n');         //salto da fin en la ultima linea se debe dar salto de linea
         String tipoToken = "";
@@ -297,5 +298,5 @@ public class Analizador {
         
     }//fin separadorLineas 
     
- 
+    
 }//fin clase

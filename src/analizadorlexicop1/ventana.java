@@ -126,6 +126,9 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
         jScrollPane3 = new javax.swing.JScrollPane();
         txtareaTokens = new javax.swing.JTextArea();
         btnAnalizarTokens = new javax.swing.JButton();
+        btnAnalizarAutomata = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        txtareaaUTOMATAS = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -137,6 +140,7 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
         });
 
         btnguardar.setText("GUARDAR ARCHIVO");
+        btnguardar.setEnabled(false);
         btnguardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnguardarActionPerformed(evt);
@@ -145,6 +149,7 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
 
         txtarea.setColumns(20);
         txtarea.setRows(5);
+        txtarea.setEnabled(false);
         jScrollPane2.setViewportView(txtarea);
 
         jLabel1.setText("TEXTO DE ENTRADA");
@@ -220,6 +225,19 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
             }
         });
 
+        btnAnalizarAutomata.setText("ANALIZAR AUTOMATA");
+        btnAnalizarAutomata.setEnabled(false);
+        btnAnalizarAutomata.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnalizarAutomataActionPerformed(evt);
+            }
+        });
+
+        txtareaaUTOMATAS.setEditable(false);
+        txtareaaUTOMATAS.setColumns(20);
+        txtareaaUTOMATAS.setRows(5);
+        jScrollPane5.setViewportView(txtareaaUTOMATAS);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -291,15 +309,21 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
                             .addComponent(jLabel2))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAnalizarTokens)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(160, 160, 160)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnAnalizarTokens, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(135, 135, 135)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnguardar)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(217, Short.MAX_VALUE))
+                                    .addComponent(btnAnalizarAutomata, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -314,7 +338,7 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel9)
@@ -324,23 +348,26 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnabrir)
                     .addComponent(btnAnalizarErrores)
-                    .addComponent(btnAnalizarTokens))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(btnAnalizarTokens)
+                    .addComponent(btnAnalizarAutomata))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnbuscar)
                     .addComponent(btnguardar))
@@ -368,13 +395,15 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
                 }
             }
         }
+        txtarea.setEnabled(true);
+        btnguardar.setEnabled(true);
     }//GEN-LAST:event_btnabrirActionPerformed
     
     
     //BOTON GYARDAR
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
         // TODO add your handling code here:
-        if (seleccionar.showDialog(null, "ʕ•́ᴥ•̀ʔっ GUARDAR ARCHIVO") == JFileChooser.APPROVE_OPTION) {
+        if (seleccionar.showDialog(null, "ʕGuardar") == JFileChooser.APPROVE_OPTION) {
             archivo = seleccionar.getSelectedFile();
             
             if (archivo.getName().endsWith("txt")) {
@@ -444,8 +473,31 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
         for (int i = 0; i < listaTokensLexemas.size(); i++) {
             txtareaTokens.setText(txtareaTokens.getText() + "\n" + listaTokensLexemas.get(i).toString());
         }//fin for
-        
+        btnAnalizarAutomata.setEnabled(true);
     }//GEN-LAST:event_btnAnalizarTokensActionPerformed
+
+    
+    private void btnAnalizarAutomataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizarAutomataActionPerformed
+        // TODO add your handling code here:
+       /* for (int i = 0; i < listaTokensLexemas.size(); i++) {
+            //char listaCarateres = listaTokensLexemas.get(i).getPalabra().charAt(i);
+            txtareaaUTOMATAS.setText(txtareaaUTOMATAS.getText() + "\nPalabra: " + listaTokensLexemas.get(i).getPalabra() + "\n");
+        }*/
+        
+        int tamanio;
+        char listaCarateres;
+                
+        for (int i = 0; i < listaTokensLexemas.size(); i++) {
+            txtareaaUTOMATAS.setText(txtareaaUTOMATAS.getText() + "\nPalabra: " + listaTokensLexemas.get(i).getPalabra() + "\n");
+            tamanio = listaTokensLexemas.get(i).getPalabra().length();
+            
+            for (int j = 0; j < tamanio; j++) {
+                listaCarateres = listaTokensLexemas.get(i).getPalabra().charAt(j);
+                txtareaaUTOMATAS.setText(txtareaaUTOMATAS.getText() + " S" + j + "=" + listaCarateres + " ");
+            }
+        }
+
+    }//GEN-LAST:event_btnAnalizarAutomataActionPerformed
 
     
     /**
@@ -484,6 +536,7 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAnalizarAutomata;
     private javax.swing.JButton btnAnalizarErrores;
     private javax.swing.JButton btnAnalizarTokens;
     private javax.swing.JButton btnabrir;
@@ -512,8 +565,10 @@ public class ventana extends javax.swing.JFrame {       //archivos entrada y sal
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTextArea txtarea;
     private javax.swing.JTextArea txtareaError;
     private javax.swing.JTextArea txtareaTokens;
+    private javax.swing.JTextArea txtareaaUTOMATAS;
     // End of variables declaration//GEN-END:variables
 }
